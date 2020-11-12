@@ -7,11 +7,11 @@ export const request = (url, options) => fetch(`${BASE_URL}${url}`, options)
     }
 
     return result.json();
-  })
+  });
+
+export const getPlanets = () => request('planets/')
   .then(result => result.results)
   .then(result => result.map((planet, i) => ({
     ...planet,
     id: i + 1,
   })));
-
-export const getPlanets = () => request('planets/');

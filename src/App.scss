@@ -240,8 +240,15 @@ body {
 
     &--return {
       top: 0;
-      left: 0;
+      right: 0;
     }
+  }
+
+  &__resident {
+    background-color: rgb(255, 244, 97);
+    width: 250px;
+    margin: 5px auto 0;
+    color: rgb(52, 9, 92);
   }
 }
 
