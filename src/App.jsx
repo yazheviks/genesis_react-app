@@ -1,24 +1,48 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable arrow-body-style */
+import React, { useState, useEffect } from 'react';
 import './App.scss';
-import { Switch, Link, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { getPlanets } from './api/api';
+import { Planets } from './components/Planets';
+import { PlanetPage } from './components/PlanetPage';
 
-export const App = () => (
-  <div>
-    React starter pack
+export const App = () => {
+  const [planets, setPlanets] = useState([]);
+
+  useEffect(() => {
+    getPlanets()
+      .then(setPlanets);
+  }, []);
+
+  return (
     <div>
-      <nav className="nav">
-        <Link to="/">Home</Link>
-        <Link to="/users">Users</Link>
-      </nav>
-
+      <h1 className="page__title">Star wars universe</h1>
       <Switch>
-        <Route path="/users">
-          <div>Users page</div>
-        </Route>
-        <Route path="/">
-          <div>Home page</div>
-        </Route>
+        <Route
+          path="/planets"
+          component={Planets}
+          exact
+        />
+
+        <Route
+          path="/planets/:planetId"
+          render={routerParams => (
+            <PlanetPage
+              {...routerParams}
+              planets={planets}
+              planetsLength={planets.length}
+            />
+          )}
+        />
+
+        <Redirect path="/" to="/planets" exact />
+
+        <h1>Page is not found</h1>
       </Switch>
     </div>
-  </div>
-);
+  );
+};
