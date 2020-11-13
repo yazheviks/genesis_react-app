@@ -37,23 +37,22 @@ export const Planets = ({ match }) => {
         </>
       ) : (
         <>
+          <Button
+            text="<"
+            mission="prev"
+            href={`/page/${pageId - 1}`}
+          />
+          <Button
+            text=">"
+            mission="next"
+            href={`/page/${pageId + 1}`}
+          />
           {planets.map(planet => (
             <Planet
               planet={planet}
               key={planet.name}
             />
           ))}
-
-          <Button
-            text=">"
-            mission="next"
-            href={`/page/${pageId + 1}`}
-          />
-          <Button
-            text="<"
-            mission="prev"
-            href={`/page/${pageId - 1}`}
-          />
         </>
       )}
     </div>

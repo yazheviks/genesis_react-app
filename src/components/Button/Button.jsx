@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const classNames = require('classnames');
 
-export const Button = ({ text, mission, href }) => (
+export const Button = ({ text, mission, href, className }) => (
   <Link
     to={href}
     exact
@@ -16,7 +16,7 @@ export const Button = ({ text, mission, href }) => (
         btn: true,
         'btn-danger': mission === 'return',
         'btn-dark': mission === 'next' || mission === 'prev',
-      }, `button__arrow--${mission}`)}
+      }, `button__arrow--${mission}`, className)}
       type="button"
     >
       {text}
@@ -28,4 +28,9 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   mission: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
+
+Button.defaultProps = {
+  className: '',
 };

@@ -62,6 +62,7 @@ export const PlanetPage = ({ match }) => {
           text="<"
           mission="prev"
           href={`/planets/${planetId - 1}`}
+          className="right"
         />
       </div>
     ) : (
@@ -76,6 +77,7 @@ export const PlanetPage = ({ match }) => {
           text=">"
           mission="next"
           href={`/planets/${planetId + 1}`}
+          className="left"
         />
       </div>
     );
@@ -83,16 +85,18 @@ export const PlanetPage = ({ match }) => {
 
   return planet ? (
     <div className="planet-page">
-      <Button
-        text=">"
-        mission="next"
-        href={`/planets/${planetId + 1}`}
-      />
-      <Button
-        text="<"
-        mission="prev"
-        href={`/planets/${planetId - 1}`}
-      />
+      <div>
+        <Button
+          text="<"
+          mission="prev"
+          href={`/planets/${planetId - 1}`}
+        />
+        <Button
+          text=">"
+          mission="next"
+          href={`/planets/${planetId + 1}`}
+        />
+      </div>
       <Button
         text="X"
         mission="return"
