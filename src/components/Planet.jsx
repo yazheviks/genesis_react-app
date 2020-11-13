@@ -16,7 +16,7 @@ export const Planet = ({ planet }) => (
           {planet.name}
         </h1>
         <img
-          src="../planet.svg"
+          src="./planet.svg"
           alt={planet.name}
           className="card-img-top"
         />

@@ -9,6 +9,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { getPlanets } from './api/api';
 import { Planets } from './components/Planets';
 import { PlanetPage } from './components/PlanetPage';
+import { PageError } from './components/PageError';
+import { Button } from './components/Button';
 
 export const App = () => {
   const [planets, setPlanets] = useState([]);
@@ -40,8 +42,16 @@ export const App = () => {
         />
 
         <Redirect path="/" to="/planets" exact />
+        <Redirect path="/genesis_react-app" to="/planets" exact />
 
-        <h1>Page is not found</h1>
+        <div className="error-page">
+          <PageError text="Page is not found" />
+          <Button
+            text="back to main"
+            mission="return"
+            href="/planets"
+          />
+        </div>
       </Switch>
     </div>
   );

@@ -72,7 +72,7 @@ export const PlanetPage = ({ match }) => {
       </div>
     ) : (
       <div className="planet-page">
-        <div className="planet-page__error">Thant&apos;s all...</div>
+        <PageError text="Thant&apos;s all..." />
         <Button
           text="X"
           mission="return"
