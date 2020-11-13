@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Planet } from '../Planet';
+import { planetType } from '../types/planetType';
 
 export const Planets = ({ planets }) => (
   <div className="planets">
@@ -15,23 +16,5 @@ export const Planets = ({ planets }) => (
 );
 
 Planets.propTypes = {
-  planets: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      rotation_period: PropTypes.string,
-      orbital_period: PropTypes.string,
-      diameter: PropTypes.string,
-      climate: PropTypes.string,
-      gravity: PropTypes.string,
-      terrain: PropTypes.string,
-      surface_water: PropTypes.string,
-      population: PropTypes.string,
-      residents: PropTypes.arrayOf(PropTypes.string),
-      films: PropTypes.arrayOf(PropTypes.string),
-      created: PropTypes.string,
-      edited: PropTypes.string,
-      url: PropTypes.string,
-    }),
-  ).isRequired,
+  planets: PropTypes.arrayOf(planetType).isRequired,
 };

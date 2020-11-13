@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { planetType } from '../types/planetType';
 
 export const Planet = ({ planet }) => (
   <div>
@@ -24,21 +24,5 @@ export const Planet = ({ planet }) => (
 );
 
 Planet.propTypes = {
-  planet: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    rotation_period: PropTypes.string,
-    orbital_period: PropTypes.string,
-    diameter: PropTypes.string,
-    climate: PropTypes.string,
-    gravity: PropTypes.string,
-    terrain: PropTypes.string,
-    surface_water: PropTypes.string,
-    population: PropTypes.string,
-    residents: PropTypes.arrayOf(PropTypes.string),
-    films: PropTypes.arrayOf(PropTypes.string),
-    created: PropTypes.string,
-    edited: PropTypes.string,
-    url: PropTypes.string,
-  }).isRequired,
+  planet: planetType.isRequired,
 };
