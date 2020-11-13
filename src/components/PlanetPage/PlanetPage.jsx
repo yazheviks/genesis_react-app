@@ -1,52 +1,65 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '../Button';
 import { PageError } from '../PageError';
 import { PlanetInfo } from '../PlanetInfo';
-import { planetType } from '../types/planetType';
+import { request } from '../../api/api';
 
-export const PlanetPage = ({ match, planets }) => {
+export const PlanetPage = ({ match }) => {
   const [residents, setResidents] = useState(null);
+  const [planet, setPlanet] = useState(null);
   const planetId = +match.params.planetId;
-  const planet = planets.find(pl => pl.id === planetId);
-  const planetsLength = planets.length;
+
+  console.log(planet);
 
   useEffect(() => {
-    const people = [];
+    request(`${match.url.slice(1)}/`)
+      .then((result) => {
+        setPlanet(result);
 
-    if (!planet) {
-      return;
-    }
+        return result;
+      })
+      .then((resultPlanet) => {
+        const people = [];
 
-    if (planet.residents.length === 0) {
-      setResidents([]);
-    }
+        if (!resultPlanet) {
+          return;
+        }
 
-    planet.residents.forEach((personURL) => {
-      const url = personURL.replace('http', 'https');
+        if (resultPlanet.residents.length === 0) {
+          setResidents([]);
+        }
 
-      fetch(url)
-        .then(person => person.json())
-        .then((personJSON) => {
-          people.push(personJSON);
-        })
-        .then(() => {
-          setResidents([...people]);
+        resultPlanet.residents.forEach((personURL) => {
+          const url = personURL.replace('http', 'https');
+
+          fetch(url)
+            .then(person => person.json())
+            .then((personJSON) => {
+              people.push(personJSON);
+            })
+            .then(() => {
+              setResidents([...people]);
+            });
         });
-    });
+      })
+      .catch(() => {
+        setPlanet('none');
+      });
   }, [planetId]);
 
-  const isErrorPage = (planetsLength !== null && planetId > planetsLength)
-  || (planetId <= 0 && planetsLength !== null);
+  const isErrorPage = planetId > 60 || planetId <= 0;
 
   if (isErrorPage) {
-    return planetId > planetsLength ? (
+    return planetId > 60 ? (
       <div className="planet-page">
         <PageError text="Thant&apos;s all..." />
         <Button
           text="X"
           mission="return"
-          href="/planets"
+          href="/page/1/"
         />
 
         <Button
@@ -61,7 +74,7 @@ export const PlanetPage = ({ match, planets }) => {
         <Button
           text="X"
           mission="return"
-          href="/planets"
+          href="/page/1"
         />
         <Button
           text=">"
@@ -87,15 +100,19 @@ export const PlanetPage = ({ match, planets }) => {
       <Button
         text="X"
         mission="return"
-        href="/planets"
+        href="/page/1"
       />
-      <PlanetInfo
-        planet={planet}
-        residents={residents}
-      />
+      {residents ? (
+        <PlanetInfo
+          planet={planet}
+          residents={residents}
+        />
+      ) : (
+        <PageError text="Loading... here" />
+      )}
     </div>
   ) : (
-    <PageError text="Loading..." />
+    <PageError text="Loading bla..." />
   );
 };
 
@@ -105,5 +122,4 @@ PlanetPage.propTypes = {
       planetId: PropTypes.string,
     }),
   }).isRequired,
-  planets: PropTypes.arrayOf(planetType).isRequired,
 };

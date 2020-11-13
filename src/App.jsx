@@ -20,11 +20,10 @@ export const App = () => {
       <h1 className="page__title">Star wars universe</h1>
       <Switch>
         <Route
-          path="/planets"
+          path="/page/:pageId"
           render={routerParams => (
             <Planets
               {...routerParams}
-              planets={planets}
             />
           )}
           exact
@@ -40,8 +39,7 @@ export const App = () => {
           )}
         />
 
-        <Redirect path="/" to="/planets" exact />
-        <Redirect path="/genesis_react-app" to="/planets" exact />
+        <Redirect path="/" to="/page/1/" exact />
 
         <div className="error-page">
           <PageError text="Page is not found" />
