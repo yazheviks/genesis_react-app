@@ -1,0 +1,24 @@
+.button {
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+
+    text-transform: lowercase;
+
+    transform: translateY(-50%);
+  
+    &--next {
+      right: 0;
+    }
+  
+    &--prev {
+      left: 0;
+    }
+  
+    &--return {
+      top: 0;
+      right: 0;
+    }
+  }  
+}

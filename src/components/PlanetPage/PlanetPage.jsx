@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '../Button';
@@ -11,8 +9,6 @@ export const PlanetPage = ({ match }) => {
   const [residents, setResidents] = useState(null);
   const [planet, setPlanet] = useState(null);
   const planetId = +match.params.planetId;
-
-  console.log(planet);
 
   useEffect(() => {
     request(`${match.url.slice(1)}/`)
@@ -108,11 +104,11 @@ export const PlanetPage = ({ match }) => {
           residents={residents}
         />
       ) : (
-        <PageError text="Loading... here" />
+        <PageError text="Loading..." />
       )}
     </div>
   ) : (
-    <PageError text="Loading bla..." />
+    <PageError text="Loading..." />
   );
 };
 
@@ -121,5 +117,6 @@ PlanetPage.propTypes = {
     params: PropTypes.shape({
       planetId: PropTypes.string,
     }),
+    url: PropTypes.string,
   }).isRequired,
 };

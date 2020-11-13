@@ -8,14 +8,15 @@ export const Button = ({ text, mission, href }) => (
   <Link
     to={href}
     exact
+    className="button"
   >
     <button
       className={classNames({
-        'planet-page__arrow': true,
+        button__arrow: true,
         btn: true,
         'btn-danger': mission === 'return',
         'btn-dark': mission === 'next' || mission === 'prev',
-      }, `planet-page__arrow--${mission}`)}
+      }, `button__arrow--${mission}`)}
       type="button"
     >
       {text}
