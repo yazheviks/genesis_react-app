@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/genesis_react-app/static/css/main.59998b30.chunk.css",
-    "main.js": "/genesis_react-app/static/js/main.17529e48.chunk.js",
-    "main.js.map": "/genesis_react-app/static/js/main.17529e48.chunk.js.map",
+    "main.css": "/genesis_react-app/static/css/main.f3d1430a.chunk.css",
+    "main.js": "/genesis_react-app/static/js/main.3ca318fa.chunk.js",
+    "main.js.map": "/genesis_react-app/static/js/main.3ca318fa.chunk.js.map",
     "runtime-main.js": "/genesis_react-app/static/js/runtime-main.e945611f.js",
     "runtime-main.js.map": "/genesis_react-app/static/js/runtime-main.e945611f.js.map",
     "static/js/2.efb59709.chunk.js": "/genesis_react-app/static/js/2.efb59709.chunk.js",
     "static/js/2.efb59709.chunk.js.map": "/genesis_react-app/static/js/2.efb59709.chunk.js.map",
     "index.html": "/genesis_react-app/index.html",
-    "static/css/main.59998b30.chunk.css.map": "/genesis_react-app/static/css/main.59998b30.chunk.css.map",
+    "static/css/main.f3d1430a.chunk.css.map": "/genesis_react-app/static/css/main.f3d1430a.chunk.css.map",
     "static/js/2.efb59709.chunk.js.LICENSE.txt": "/genesis_react-app/static/js/2.efb59709.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e945611f.js",
     "static/js/2.efb59709.chunk.js",
-    "static/css/main.59998b30.chunk.css",
-    "static/js/main.17529e48.chunk.js"
+    "static/css/main.f3d1430a.chunk.css",
+    "static/js/main.3ca318fa.chunk.js"
   ]
 }
