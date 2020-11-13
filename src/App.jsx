@@ -15,13 +15,18 @@ export const App = () => {
       .then(setPlanets);
   }, []);
 
-  return (
+  return planets ? (
     <div>
       <h1 className="page__title">Star wars universe</h1>
       <Switch>
         <Route
           path="/planets"
-          component={Planets}
+          render={routerParams => (
+            <Planets
+              {...routerParams}
+              planets={planets}
+            />
+          )}
           exact
         />
 
@@ -31,7 +36,6 @@ export const App = () => {
             <PlanetPage
               {...routerParams}
               planets={planets}
-              planetsLength={planets.length}
             />
           )}
         />
@@ -49,5 +53,7 @@ export const App = () => {
         </div>
       </Switch>
     </div>
+  ) : (
+    <PageError text="Loading..." />
   );
 };

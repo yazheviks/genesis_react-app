@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes, { arrayOf } from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const Planet = ({ planet }) => (
   <div>
@@ -35,8 +35,8 @@ Planet.propTypes = {
     terrain: PropTypes.string,
     surface_water: PropTypes.string,
     population: PropTypes.string,
-    residents: arrayOf(PropTypes.string),
-    films: arrayOf(PropTypes.string),
+    residents: PropTypes.arrayOf(PropTypes.string),
+    films: PropTypes.arrayOf(PropTypes.string),
     created: PropTypes.string,
     edited: PropTypes.string,
     url: PropTypes.string,
