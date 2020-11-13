@@ -39,7 +39,9 @@ export const PlanetPage = ({ match }) => {
         }
 
         pl.residents.forEach((personURL) => {
-          fetch(personURL)
+          const url = personURL.replace('http', 'https');
+
+          fetch(url)
             .then(person => person.json())
             .then((personJSON) => {
               people.push(personJSON);
