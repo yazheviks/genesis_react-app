@@ -1,15 +1,9 @@
-/* eslint-disable max-len */
-/* eslint-disable indent */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable arrow-body-style */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import { getPlanets } from '../api/api';
-import { Button } from './Button';
-import { PageError } from './PageError';
-import { PlanetInfo } from './PlanetInfo';
+import PropTypes from 'prop-types';
+import { getPlanets } from '../../api/api';
+import { Button } from '../Button';
+import { PageError } from '../PageError';
+import { PlanetInfo } from '../PlanetInfo';
 
 export const PlanetPage = ({ match }) => {
   const [planet, setPlanet] = useState(null);
@@ -114,4 +108,12 @@ export const PlanetPage = ({ match }) => {
   ) : (
     <PageError text="Loading..." />
   );
+};
+
+PlanetPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      planetId: PropTypes.string,
+    }),
+  }).isRequired,
 };

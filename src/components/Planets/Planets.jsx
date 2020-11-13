@@ -1,9 +1,6 @@
-/* eslint-disable no-debugger */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
-import { getPlanets } from '../api/api';
-import { Planet } from './Planet';
+import { getPlanets } from '../../api/api';
+import { Planet } from '../Planet';
 
 export const Planets = () => {
   const [planets, setPlanets] = useState([]);

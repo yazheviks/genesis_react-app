@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const classNames = require('classnames');
 
@@ -22,3 +22,9 @@ export const Button = ({ text, mission, href }) => (
     </button>
   </Link>
 );
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  mission: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+};

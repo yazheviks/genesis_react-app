@@ -1,10 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable arrow-body-style */
 import React, { useState, useEffect } from 'react';
-import './App.scss';
+import './main.scss';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { getPlanets } from './api/api';
 import { Planets } from './components/Planets';
