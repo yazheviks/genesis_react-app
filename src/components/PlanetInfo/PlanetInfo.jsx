@@ -34,9 +34,9 @@ export const PlanetInfo = ({ planet, residents }) => (
             {residents.map(person => (
               <p
                 className="planet-page__resident"
-                key={person.name}
+                key={person}
               >
-                {person.name}
+                {person}
               </p>
             ))}
           </div>

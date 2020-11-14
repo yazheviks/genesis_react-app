@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '../Button';
@@ -7,10 +8,18 @@ import { request } from '../../api/api';
 
 export const PlanetPage = ({ match }) => {
   const [residents, setResidents] = useState(null);
+  const [planetsCount, setPlanetsCount] = useState(null);
   const [planet, setPlanet] = useState(null);
   const planetId = +match.params.planetId;
 
   useEffect(() => {
+    request('planets/')
+      .then(result => result.count)
+      .then(setPlanetsCount)
+      .catch(() => {
+        setPlanetsCount(60);
+      });
+
     request(`${match.url.slice(1)}/`)
       .then((result) => {
         setPlanet(result);
@@ -34,10 +43,13 @@ export const PlanetPage = ({ match }) => {
           fetch(url)
             .then(person => person.json())
             .then((personJSON) => {
-              people.push(personJSON);
+              people.push(personJSON.name);
             })
             .then(() => {
               setResidents([...people]);
+            })
+            .catch(() => {
+              setResidents(['We did not find famous people. Try again later.']);
             });
         });
       })
@@ -46,10 +58,10 @@ export const PlanetPage = ({ match }) => {
       });
   }, [planetId]);
 
-  const isErrorPage = planetId > 60 || planetId <= 0;
+  const isErrorPage = planetId > planetsCount || planetId <= 0;
 
   if (isErrorPage) {
-    return planetId > 60 ? (
+    return planetId > planetsCount ? (
       <div className="planet-page">
         <PageError text="Thant&apos;s all..." />
         <Button
