@@ -1,0 +1,29 @@
+.button {
+  justify-self: center;
+  align-self: center;
+  &__arrow {
+    
+
+    text-transform: lowercase;
+  
+    &--return {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }  
+}
+
+.left {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.right {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}

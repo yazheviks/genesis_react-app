@@ -1,0 +1,34 @@
+@import './reset';
+@import './vars';
+
+@import './components/Planets/Planets.scss';
+@import './components/Planet/Planet.scss';
+@import './components/PlanetPage/PlanetPage.scss';
+@import './components/PageError/PageError.scss';
+@import './components/Button/Button.scss';
+
+body {
+  padding: 20px;
+  background-color: #050e13;
+}
+
+.page {
+  &__title {
+    text-align: center;
+    font-size: 50px;
+    color: rgb(255, 244, 97);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+
+    &::after {
+      display: block;
+      content: '';
+      height: 1px;
+      width: 30%;
+      margin: 10px auto 15px;
+      background-color: rgb(255, 244, 97);
+    }
+  }
+}
+
+

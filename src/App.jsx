@@ -1,24 +1,44 @@
 import React from 'react';
-import './App.scss';
-import { Switch, Link, Route } from 'react-router-dom';
+import './main.scss';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { Planets } from './components/Planets';
+import { PlanetPage } from './components/PlanetPage';
+import { PageError } from './components/PageError';
+import { Button } from './components/Button';
 
 export const App = () => (
   <div>
-    React starter pack
-    <div>
-      <nav className="nav">
-        <Link to="/">Home</Link>
-        <Link to="/users">Users</Link>
-      </nav>
+    <h1 className="page__title">Star wars universe</h1>
+    <Switch>
+      <Route
+        path="/page/:pageId"
+        render={routerParams => (
+          <Planets
+            {...routerParams}
+          />
+        )}
+        exact
+      />
 
-      <Switch>
-        <Route path="/users">
-          <div>Users page</div>
-        </Route>
-        <Route path="/">
-          <div>Home page</div>
-        </Route>
-      </Switch>
-    </div>
+      <Route
+        path="/planets/:planetId"
+        render={routerParams => (
+          <PlanetPage
+            {...routerParams}
+          />
+        )}
+      />
+
+      <Redirect path="/" to="/page/1/" exact />
+
+      <div className="error-page">
+        <PageError text="Page is not found" />
+        <Button
+          text="back to main"
+          mission="return"
+          href="/page/1"
+        />
+      </div>
+    </Switch>
   </div>
 );
